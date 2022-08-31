@@ -58,6 +58,9 @@ html {
     max-width: 480px;
     border-bottom: 1px solid #ebebeb;
     z-index: 100;
+    padding-bottom: 37px;
+    border-radius: 5px;
+    /* position: relative; */
 }
 
 .name_content {
@@ -125,18 +128,81 @@ html {
     cursor: pointer;
 }
 
-#progress {
-    width: 100%;
-    -webkit-appearance: none;
+#current-time-song {
+    background-color: #ebebeb;
     height: 6px;
-    background: var(--primary-color);
+    border-radius: 10px;
+    margin: auto;
+    cursor: pointer;
+    /* position: relative; */
+}
+
+
+
+.time {
+    /* background-color: var(--text-color); */
+    width: 100%;
+    padding: 20px;
+    position:absolute;
+    bottom: -10px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0px;
+
+}
+
+span.current-time.colors {
+    margin-left: -20px;
+}
+
+span.duration-time.colors {
+    margin-right: 10px;
+}
+
+
+.colors {
+    color: var(--primary-color);
+}
+
+
+.progress {
+    width: 0;
+    background-color : var(--primary-color);
+    height: 100%;
     outline: none;
     opacity: 0.7;
     -webkit-transition: 0.2s;
     transition: opacity 0.2s;
     color: var(--text-color);
-    cursor: pointer;
+    border-radius: 10px;
+    position: relative;
+    background: linear-gradient(-45deg, #ff855f, #ea4081, #23a6d5, #23d5ab);
+    animation: gradient 9s ease infinite;
 }
+
+#current-time-song:hover
+.icon-progress::after {
+    opacity: 1;
+}
+
+#current-time-song:hover {
+    height: 9px;
+}
+
+.icon-progress::after {
+    content: "";
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background-color:rgb(49, 52, 51);
+    position: absolute;
+    top : -2px;
+    right: -6px;
+    opacity: 0;
+    outline: 0.5px solid rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+}
+
 
 
 .playlist {
@@ -167,6 +233,7 @@ html {
 
 }
 
+
 .song.active {
     background-color: var(--text-color);
 }
@@ -193,8 +260,36 @@ html {
     padding: 0 16px;
 }
 
-.song .option {
+@keyframes effect-heart {
+    0% {
+        transform: rotate(60deg) scale(1.7);
+    }
+    40% {
+        transform: rotate(0deg) scale(1);
+    }
+    41% {
+        transform: rotate(360deg) scale(1);
+    }
+    100% {
+        transform: rotate(0deg) scale(1);
+    }
+}
+
+.song .options {
     padding: 16px 8px;
-    color: #999;
-    font-size: 18px;
-  }
+    color: #333;
+    font-size: 18px;  
+}
+
+i.fas.fa-heart {
+    font-size: larger;  
+    color: #ccc;
+    font-weight: bold;
+}
+
+.options.like .fas.fa-heart {
+    animation: effect-heart 0.4s linear;
+    color: red;
+}
+
+
